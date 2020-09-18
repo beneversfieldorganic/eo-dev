@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, json
 import csv
-import get_conn
+from .get_conn import get_conn
 
 days_dict = {}
 days_dict['Monday'] = 0

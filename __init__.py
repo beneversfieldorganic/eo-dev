@@ -1,7 +1,7 @@
 import flask
 from flask import Flask, render_template, redirect, request, url_for
 import flask_login
-import func_postcodes
+from .func_postcodes import render as render_postcodes
 login_manager = flask_login.LoginManager()
 
 app = Flask(__name__)
@@ -51,7 +51,7 @@ def login():
 def postcodes():
     values = request.values.to_dict()
     template = 'postcodes.html'
-    return func_postcodes.render(values, template)
+    return render_postcodes(values, template)
 
 
 @app.route('/protected')
