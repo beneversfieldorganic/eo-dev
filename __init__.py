@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = 'super secret string'  # Change this!
 login_manager.init_app(app)
 
-users = {'admin': {'password': 'admin'}}
+users = {'bmayo': {'password': 'iuqe87238721kjaw'}}
 
 class User(flask_login.UserMixin):
     pass
