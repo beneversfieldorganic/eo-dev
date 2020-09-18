@@ -1,6 +1,6 @@
 from flask import render_template, jsonify, json
 import csv
-from .get_conn import get_conn
+from .get_conn import get_conn as get_conn
 
 days_dict = {}
 days_dict['Monday'] = 0
@@ -32,22 +32,15 @@ def get_all_rounds(cur):
     return to_return
 
 def create_delivery_round(name, days, amount, postcodes, cur, cnx):
-
-
     days_string = ''
     days_list = days.split(',')
     for day in days_list:
         days_string = days_string + str(days_dict.get(day))+','
-
-
     for code in postcodes:
         sql = """replace into delivery_postcodes 
         (postcode, delivery_day, description, cost) 
         values ('{}','{}','{}',{})""".format(code, days_string.rstrip(','), name, amount*100)
-        print (sql)
-
         cur.execute(sql)
-
     cnx.commit()
 
 
