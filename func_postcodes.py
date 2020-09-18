@@ -45,7 +45,7 @@ def create_delivery_round(name, days, amount, postcodes, cur, cnx):
 
 
 def render(values, template):
-    conn = get_conn.get_conn()
+    conn = get_conn()
     cnx = conn[0]
     cur = conn[1]
 
