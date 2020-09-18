@@ -1,6 +1,7 @@
 from flask import render_template, jsonify, json
 import csv
 from .get_conn import get_conn as get_conn
+import os
 
 days_dict = {}
 days_dict['Monday'] = 0
@@ -52,7 +53,7 @@ def render(values, template):
     if values.get('function') == 'initialLoad':
         data = {}
         postcode_districts = []
-        with open('static/data/postcodes.csv', newline='') as f:
+        with open('/var/www/eo-dev/eo_dev/static/data/postcodes.csv', newline='') as f:
             reader = csv.reader(f)
             postcode_data = list(reader)
         postcode_data = postcode_data[1:]

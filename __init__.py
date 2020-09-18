@@ -2,6 +2,7 @@ import flask
 from flask import Flask, render_template, redirect, request, url_for
 import flask_login
 from .func_postcodes import render as render_postcodes
+import time
 login_manager = flask_login.LoginManager()
 
 app = Flask(__name__)
@@ -39,6 +40,7 @@ def login():
         return render_template('login.html')
     if flask.request.method == 'POST':
         username = flask.request.form['username']
+        time.sleep(5)
         if flask.request.form['password'] == users[username]['password']:
             user = User()
             user.id = username
